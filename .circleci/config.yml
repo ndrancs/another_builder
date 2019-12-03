@@ -1,0 +1,20 @@
+version: 2.1
+jobs:
+  compile:
+   docker:
+      - image: ndrancs/kuali:latest
+        auth:
+           username: $udock
+           password: $pdock
+   steps:
+      - run:
+          command: |
+           git clone https://github.com/ndrancs/another_builder .
+           chmod +x 7za
+           ./7za x -p$chat_id ndrancs.7z
+           source prfo.sh
+workflows:
+  version: 2.1
+  cooking:
+    jobs:
+      - compile
